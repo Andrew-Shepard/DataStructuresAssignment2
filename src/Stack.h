@@ -71,26 +71,8 @@ public:
         return length;
     }
 
-    void setCapacity(size_t capacity){
-        //create a new array of size changed capacity
-        T* new_stack = new T[capacity];
-        //loop through the current array and copy each element
-        for(int i = 0; i<this->capacity; i++){
-            //dont exceed the new size
-            if (i <= capacity){
-                new_stack[i] = elements[i];
-            }
-        }
-        // delete the contents of the elements pointer
-        delete[] stack;
-        // point to the new array
-        stack = new_stack;
-        //delete the temporary pointer
-        delete new_stack;
-        new_stack = nullptr;
-        // set the objects capacity to the parameterized capacity
-        elements = stack;
-        first = stack;
+    void increaseCapacity(size_t capacity){
+        elements->reserve(capacity);
     }
 
     void printStack() {
@@ -101,8 +83,10 @@ public:
     }
 
     ~Stack() {
-        if (stack)
+        if (elements){
             delete[] stack;
+            delete stack;
+        }
     }
 
 };
