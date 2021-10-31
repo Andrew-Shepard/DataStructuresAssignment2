@@ -47,8 +47,14 @@ public:
         if (length == 0){
             return;
         }
-        last--;
+
         length--;
+        if (first != &(elements->back())){
+            first++;
+        }
+        else{
+            first = &(elements->front());
+        }
     }
 
     T top(){
@@ -69,9 +75,14 @@ public:
     }
 
     void print() {
-        std::vector<T> *p = elements;
+        T *p = first;
         for (uint64_t i = 0; i < length; i++) {
-            std::cout << p->at(i) << std::endl;
+            std::cout << *p << std::endl;
+            if (p != &queue[capacity - 1]) {
+                p++;
+            } else {
+                p = queue;
+            }
         }
     }
 
