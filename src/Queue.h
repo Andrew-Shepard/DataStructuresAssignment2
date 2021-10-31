@@ -2,58 +2,53 @@
 // Created by andre on 10/31/2021.
 //
 
-#ifndef DATASTRUCTURESASSIGNMENT2_STACK_H
-#define DATASTRUCTURESASSIGNMENT2_STACK_H
-
+#ifndef DATASTRUCTURESASSIGNMENT2_QUEUE_H
+#define DATASTRUCTURESASSIGNMENT2_QUEUE_H
 #include <iostream>
 #include <vector>
 template<typename T>
-class Stack {
-    T *stack = nullptr;
+class Queue {
+    T *queue = nullptr;
     T *first = nullptr;
+    T *last = nullptr;
     std::vector<T> *elements = nullptr;
     uint64_t length = 0;
     size_t capacity = 0;
 public:
-    Stack(){
+    Queue(){
     }
-    Stack(uint64_t capacity){
+    Queue(uint64_t capacity){
         this->capacity = capacity;
         elements = new std::vector<T>(capacity);
-        stack = &elements->front();
-        first = stack;
+        queue = &elements->front();
+        first = last = queue;
     }
 
-    void push(T data) {
+    void enqueue(T data) {
         if (length == capacity){
             return;
         }
 
         length++;
 
-        *first = data;
+        *last = data;
 
-        if (first != &(elements->back())) {
-            first++;
+        if (last != &(elements->back())) {
+            last++;
         }else{
-            first = stack;
+            last = queue;
         }
 
 
     }
 
-    void pop(){
-        //Moves the focused element to the next in the stack
+    void dequeue(){
+        //Removes the last element in the queue
         if (length == 0){
             return;
         }
+        last--;
         length--;
-        if(first != &(elements->front())){
-            first--;
-        }
-        else{
-            first = stack;
-        }
     }
 
     T top(){
@@ -61,7 +56,7 @@ public:
     }
 
     void clear() {
-        first = stack;
+        first = queue;
         length = 0;
     }
 
@@ -80,12 +75,10 @@ public:
         }
     }
 
-    ~Stack() {
+    ~Queue() {
         elements->clear();
         delete elements;
     }
 
 };
-
-
-#endif //DATASTRUCTURESASSIGNMENT2_STACK_H
+#endif //DATASTRUCTURESASSIGNMENT2_QUEUE_H
