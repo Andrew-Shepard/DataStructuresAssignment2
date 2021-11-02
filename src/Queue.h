@@ -70,6 +70,10 @@ public:
         return length;
     }
 
+    size_t getCapacity(){
+        return capacity;
+    }
+
     void increaseCapacity(size_t capacity){
         elements->reserve(capacity);
     }
