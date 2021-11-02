@@ -9,7 +9,7 @@
 template<typename T>
 class Queue {
     T *queue = nullptr;
-    T *first = nullptr;
+    T *first_in_queue = nullptr;
     T *last = nullptr;
     std::vector<T> *elements = nullptr;
     uint64_t length = 0;
@@ -21,7 +21,7 @@ public:
         this->capacity = capacity;
         elements = new std::vector<T>(capacity);
         queue = &elements->front();
-        first = last = queue;
+        first_in_queue = last = queue;
     }
 
     void enqueue(T data) {
@@ -49,39 +49,26 @@ public:
         }
 
         length--;
-        if (first != &(elements->back())){
-            first++;
+        if (first_in_queue != &(elements->back())){
+            first_in_queue++;
         }
         else{
-            first = &(elements->front());
+            first_in_queue = &(elements->front());
         }
     }
 
-    T top(){
-        return first;
+    T* first(){
+        return first_in_queue;
     }
 
-    void clear() {
-        first = queue;
-        length = 0;
-    }
-
-    uint64_t getLength() {
+    uint64_t size() {
         return length;
     }
 
-    size_t getCapacity(){
-        return capacity;
-    }
-
-    void increaseCapacity(size_t capacity){
-        elements->reserve(capacity);
-    }
-
-    void print() {
-        T *p = first;
+    void print(std::ostream &os) {
+        T *p = first_in_queue;
         for (uint64_t i = 0; i < length; i++) {
-            std::cout << *p << std::endl;
+            os << *p << std::endl;
             if (p != &queue[capacity - 1]) {
                 p++;
             } else {

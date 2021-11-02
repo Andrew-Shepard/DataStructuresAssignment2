@@ -2,12 +2,9 @@
 #include "Stack.h"
 #include "Queue.h"
 int main() {
-    Queue<double> kachorpa(42069);
-    for(int i = 0; i<100; i++){
-        kachorpa.enqueue(i);
-    }
-    kachorpa.dequeue();
-    kachorpa.dequeue();
-    kachorpa.dequeue();
-    kachorpa.print();
+    double passed_data = 20;
+    Stack<double> localTestStack(100);
+    localTestStack.push(passed_data);
+    std::cout << *localTestStack.top();
+    localTestStack.print(std::cout);
 }

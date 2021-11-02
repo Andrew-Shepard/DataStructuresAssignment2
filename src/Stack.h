@@ -33,7 +33,7 @@ public:
 
         *first = data;
 
-        if (first != &(elements->back())) {
+        if (first != &(elements->front())) {
             first++;
         }else{
             first = stack;
@@ -56,27 +56,19 @@ public:
         }
     }
 
-    T top(){
+    T* top(){
         return first;
     }
 
-    void clear() {
-        first = stack;
-        length = 0;
-    }
-
-    uint64_t getLength() {
+    uint64_t size() {
         return length;
     }
 
-    void increaseCapacity(size_t capacity){
-        elements->reserve(capacity);
-    }
 
-    void print() {
+    void print(std::ostream &os) {
         std::vector<T> *p = elements;
         for (uint64_t i = 0; i < length; i++) {
-            std::cout << p->at(i) << std::endl;
+            os << p->at(i) << std::endl;
         }
     }
 
