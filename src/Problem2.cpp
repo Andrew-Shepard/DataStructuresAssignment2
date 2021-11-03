@@ -42,7 +42,18 @@ std::vector<double> Problem2::isolateNegatives(std::vector<double> original, int
     //isolate ( orignal , index )
     return isolateNegatives(original,index);
 }
-/**
-void Problem2::printAscendingDescending(std::ostream &os){
 
-}**/
+void Problem2::printAscendingDescending(int x , int y, std::ostream &os){
+    //if x is less than y
+    if (x <= y){
+        //print x
+        os << x << " ";
+        //call recursively with the new x
+        printAscendingDescending(x+1,y,os);
+    } else {
+        return;
+    }
+    if (x < y){
+        os << x << " ";
+    }
+}

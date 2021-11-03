@@ -17,7 +17,7 @@ public:
     }
     uint64_t countTheOnes(uint64_t binary_number);
     std::vector<double> isolateNegatives(std::vector<double> original, int index);
-    void printAscendingDescending(std::ostream &os);
+    void printAscendingDescending(int x, int y, std::ostream &os);
 };
 
 
