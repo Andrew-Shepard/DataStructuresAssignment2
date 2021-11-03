@@ -59,7 +59,7 @@ public:
         length--;
         if(first != &(elements->front())){
             first--;
-
+            top_of_stack--;
         }
         else{
             first = stack;
