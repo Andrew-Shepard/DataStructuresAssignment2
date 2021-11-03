@@ -22,6 +22,7 @@ template<typename T>
 class Stack {
     T *stack = nullptr;
     T *first = nullptr;
+    T *top_of_stack = nullptr;
     std::vector<T> *elements = nullptr;
     uint64_t length = 0;
     size_t capacity = 0;
@@ -39,18 +40,15 @@ public:
         if (length == capacity){
             return;
         }
-
         length++;
-
+        top_of_stack = first;
         *first = data;
 
-        if (first != &(elements->front())) {
+        if (first != &(elements->back())) {
             first++;
         }else{
             first = stack;
         }
-
-
     }
 
     void pop(){
@@ -61,6 +59,7 @@ public:
         length--;
         if(first != &(elements->front())){
             first--;
+
         }
         else{
             first = stack;
@@ -68,7 +67,7 @@ public:
     }
 
     T* top(){
-        return first;
+        return top_of_stack;
     }
 
     uint64_t size() {

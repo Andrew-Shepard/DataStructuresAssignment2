@@ -14,5 +14,10 @@ int main() {
      *  Full project and structure: https://github.com/Andrew-Shepard/DataStructuresAssignment2
      *  Repository will be made public after the submission date.
      * **/
+    double passed_data = 20;
+    Stack<double> localTestStack(100);
+    localTestStack.push(passed_data);localTestStack.push(passed_data);localTestStack.push(passed_data);
+    std::cout << *localTestStack.top() << std::endl;
+    localTestStack.print(std::cout);
     return 0;
 }

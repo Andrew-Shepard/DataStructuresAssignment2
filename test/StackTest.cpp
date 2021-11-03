@@ -50,7 +50,6 @@ TEST_CASE("Print displays the expected string","[Public Function]"){
     for(int i = 0; i<=stack_size; i++){
         localTestStack.push(i);
     }
-
     std::string expected = "";
     for(int i = 0; i<=stack_size; i++){
         expected.append(std::to_string(i));
