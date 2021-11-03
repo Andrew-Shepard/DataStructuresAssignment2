@@ -1,8 +1,15 @@
-//
-// Created by andre on 11/2/2021.
-//
-
 #include "Problem2.h"
+/** Andrew Shepard
+     *  Windows 10 Home
+     *  All System information: https://i.imgur.com/wZOrk5I.png
+     *  ming-w64
+     *  clion 2021.2
+     *  cmake 3.20 (FLAGS: -Wa, -mbig-obj) : https://i.imgur.com/9XhY5xF.png
+     *  CPP 17
+     *  Testing: catch2 2.13.7 https://github.com/catchorg/Catch2
+     *  Full project and structure: https://github.com/Andrew-Shepard/DataStructuresAssignment2
+     *  Repository will be made public after the submission date.
+     * **/
 uint64_t Problem2::countTheOnes(uint64_t binary_number){
     //1111101
     uint64_t ones = 0;
